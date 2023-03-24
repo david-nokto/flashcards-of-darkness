@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Card Details{% endblock %}
+
+{% block content %}
+    <h1>Flash Card</h1>
+    Question:   {{ card.question }} <br>
+    Answer:     {{ card.answer }}
+    <p>
+        <a href="{{ url_for('welcome')}}">Home</a>
+        <button>
+        {% if index < max_index %}
+        <!--<a href="/card/{{ index + 1 }}">-->
+        <!--url_for looks upp correct url? based on app.route on function name-->
+            <a href="{{ url_for('card_view', index=index + 1) }}">
+                Next card
+            </a>
+        {% else %}
+            <a href="{{ url_for('card_view', index=0)}}">
+                Start over
+            </a>
+        {% endif %}
+        </button>
+        <br>
+        <a href="{{ url_for('remove_card', index=index)}}">
+            Remove Card
+        </a>
+
+    </p>
+{% endblock %}

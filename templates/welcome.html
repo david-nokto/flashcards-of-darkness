@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Flashcards of Darkness{% endblock %}
+
+{% block content %}
+    <h2>Flashcards of Darkness</h2>
+    This {{ message }} contains two <{{x}}>jinja</{{x}}> variables.
+    <a href="{{ url_for('add_card')}}">Add new card</a>
+    <ul>
+        {% for card in cards %}
+            <li>
+                <a href="{{ url_for('card_view', index=loop.index0) }}">
+                    {{ card.question }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
